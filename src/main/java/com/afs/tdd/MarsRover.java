@@ -26,38 +26,53 @@ public class MarsRover {
     }
 
     private void turnRight() {
-        if (roverStatus.getDirection().equals("N")) {
-            roverStatus.setDirection("E");
-        } else if (roverStatus.getDirection().equals("W")) {
-            roverStatus.setDirection("N");
-        } else if (roverStatus.getDirection().equals("E")) {
-            roverStatus.setDirection("S");
-        } else if (roverStatus.getDirection().equals("S")) {
-            roverStatus.setDirection("W");
+        switch (roverStatus.getDirection()) {
+            case "N":
+                roverStatus.setDirection("E");
+                break;
+            case "W":
+                roverStatus.setDirection("N");
+                break;
+            case "E":
+                roverStatus.setDirection("S");
+                break;
+            case "S":
+                roverStatus.setDirection("W");
+                break;
         }
     }
 
     private void turnLeft() {
-        if (roverStatus.getDirection().equals("N")) {
-            roverStatus.setDirection("W");
-        } else if (roverStatus.getDirection().equals("W")) {
-            roverStatus.setDirection("S");
-        } else if (roverStatus.getDirection().equals("E")) {
-            roverStatus.setDirection("N");
-        } else if (roverStatus.getDirection().equals("S")) {
-            roverStatus.setDirection("E");
+        switch (roverStatus.getDirection()) {
+            case "N":
+                roverStatus.setDirection("W");
+                break;
+            case "W":
+                roverStatus.setDirection("S");
+                break;
+            case "E":
+                roverStatus.setDirection("N");
+                break;
+            case "S":
+                roverStatus.setDirection("E");
+                break;
         }
     }
 
     private void move() {
-        if (roverStatus.getDirection().equals("N")) {
-            roverStatus.setLocationY(roverStatus.getLocationY() + 1);
-        } else if (roverStatus.getDirection().equals("W")) {
-            roverStatus.setLocationX(roverStatus.getLocationX() - 1);
-        } else if (roverStatus.getDirection().equals("E")) {
-            roverStatus.setLocationX(roverStatus.getLocationX() + 1);
-        } else if (roverStatus.getDirection().equals("S")) {
-            roverStatus.setLocationY(roverStatus.getLocationY() - 1);
+        switch (roverStatus.getDirection()) {
+            case "N":
+                roverStatus.setLocationY(roverStatus.getLocationY() + 1);
+                break;
+            case "W":
+                roverStatus.setLocationX(roverStatus.getLocationX() - 1);
+                break;
+            case "E":
+                roverStatus.setLocationX(roverStatus.getLocationX() + 1);
+                break;
+            case "S":
+                roverStatus.setLocationY(roverStatus.getLocationY() - 1);
+                break;
         }
     }
 
