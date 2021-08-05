@@ -26,7 +26,12 @@ public class MarsRover {
     }
 
     private void turnLeft() {
-        roverStatus.setDirection("W");
+        if(roverStatus.getDirection().equals("N")){
+            roverStatus.setDirection("W");
+        }
+        else if(roverStatus.getDirection().equals("W")){
+            roverStatus.setDirection("S");
+        }
     }
 
     private void move() {
