@@ -28,16 +28,16 @@ public class MarsRover {
     private void turnRight() {
         switch (roverStatus.getDirection()) {
             case "N":
-                roverStatus.setDirection("E");
+                setDirection("E");
                 break;
             case "W":
-                roverStatus.setDirection("N");
+                setDirection("N");
                 break;
             case "E":
-                roverStatus.setDirection("S");
+                setDirection("S");
                 break;
             case "S":
-                roverStatus.setDirection("W");
+                setDirection("W");
                 break;
         }
     }
@@ -45,16 +45,16 @@ public class MarsRover {
     private void turnLeft() {
         switch (roverStatus.getDirection()) {
             case "N":
-                roverStatus.setDirection("W");
+                setDirection("W");
                 break;
             case "W":
-                roverStatus.setDirection("S");
+                setDirection("S");
                 break;
             case "E":
-                roverStatus.setDirection("N");
+                setDirection("N");
                 break;
             case "S":
-                roverStatus.setDirection("E");
+                setDirection("E");
                 break;
         }
     }
@@ -62,18 +62,22 @@ public class MarsRover {
     private void move() {
         switch (roverStatus.getDirection()) {
             case "N":
-                roverStatus.setLocationY(roverStatus.getLocationY() + 1);
+                roverStatus.setLocationY(Math.addExact(roverStatus.getLocationY(), 1));
                 break;
             case "W":
-                roverStatus.setLocationX(roverStatus.getLocationX() - 1);
+                roverStatus.setLocationX(Math.addExact(roverStatus.getLocationX(), -1));
                 break;
             case "E":
-                roverStatus.setLocationX(roverStatus.getLocationX() + 1);
+                roverStatus.setLocationX(Math.addExact(roverStatus.getLocationX(), 1));
                 break;
             case "S":
-                roverStatus.setLocationY(roverStatus.getLocationY() - 1);
+                roverStatus.setLocationY(Math.addExact(roverStatus.getLocationY(), -1));
                 break;
         }
+    }
+
+    private void setDirection(String direction) {
+        roverStatus.setDirection(direction);
     }
 
     public RoverStatus getRoverStatus() {
