@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DemoTest {
     @Test
-    public void should_return_locationX_0_locationY_direction1_N_when_execute_command_given_0_0_N_and_M() {
+    public void should_return_01N_when_execute_command_given_00N_M() {
         //given
         MarsRover marsRover = new MarsRover(new RoverStatus(0, 0, "N"));
         RoverStatus expectedRoverStatus = new RoverStatus(0, 1, "N");
