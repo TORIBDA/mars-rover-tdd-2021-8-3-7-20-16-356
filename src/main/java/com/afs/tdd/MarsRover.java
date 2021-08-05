@@ -62,16 +62,16 @@ public class MarsRover {
     private void move() {
         switch (roverStatus.getDirection()) {
             case "N":
-                roverStatus.setLocationY(Math.addExact(roverStatus.getLocationY(), 1));
+                roverStatus.setLocationY(Math.incrementExact(roverStatus.getLocationY()));
                 break;
             case "W":
-                roverStatus.setLocationX(Math.addExact(roverStatus.getLocationX(), -1));
+                roverStatus.setLocationX(Math.decrementExact(roverStatus.getLocationX()));
                 break;
             case "E":
-                roverStatus.setLocationX(Math.addExact(roverStatus.getLocationX(), 1));
+                roverStatus.setLocationX(Math.incrementExact(roverStatus.getLocationX()));
                 break;
             case "S":
-                roverStatus.setLocationY(Math.addExact(roverStatus.getLocationY(), -1));
+                roverStatus.setLocationY(Math.decrementExact(roverStatus.getLocationY()));
                 break;
         }
     }
