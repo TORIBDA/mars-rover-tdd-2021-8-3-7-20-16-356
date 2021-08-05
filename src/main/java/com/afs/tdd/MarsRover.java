@@ -1,10 +1,24 @@
 package com.afs.tdd;
 
+import java.text.MessageFormat;
+
 public class MarsRover {
     private RoverStatus roverStatus;
 
     public MarsRover(RoverStatus roverStatus) {
         this.roverStatus = roverStatus;
+    }
+
+    public String executeInstructionWithReport(String fullInstructions) {
+        final String[] instructions = fullInstructions.split(" ");
+        roverStatus = new RoverStatus(Integer.parseInt(instructions[0]),
+                Integer.parseInt(instructions[1]),
+                instructions[2]);
+        executeCommands(instructions[instructions.length - 1]);
+        return MessageFormat.format("X: {0} Y: {1} D: {2}",
+                this.roverStatus.getLocationX(),
+                this.roverStatus.getLocationY(),
+                this.roverStatus.getDirection());
     }
 
     public void executeCommands(String commands) {
