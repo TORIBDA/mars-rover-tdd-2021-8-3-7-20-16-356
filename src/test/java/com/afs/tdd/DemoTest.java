@@ -173,4 +173,18 @@ class DemoTest {
         assertEquals(expectedRoverStatus.getLocationY(), marsRover.getRoverStatus().getLocationY());
         assertEquals(expectedRoverStatus.getDirection(), marsRover.getRoverStatus().getDirection());
     }
+
+    @Test
+    public void should_return_AReport_when_execute_command_with_report_given_full_instructions() {
+        //given
+        MarsRover marsRover = new MarsRover(new RoverStatus(0, 0, "N"));
+        RoverStatus expectedRoverStatus = new RoverStatus(1, -2, "S");
+        //when
+        String report = marsRover.executeInstructionWithReport("0 0 N MRMRMMM");
+        //then
+        assertEquals(expectedRoverStatus.getLocationX(), marsRover.getRoverStatus().getLocationX());
+        assertEquals(expectedRoverStatus.getLocationY(), marsRover.getRoverStatus().getLocationY());
+        assertEquals(expectedRoverStatus.getDirection(), marsRover.getRoverStatus().getDirection());
+        assertEquals("X: 1 Y: -2 D: S", report);
+    }
 }
