@@ -1,19 +1,25 @@
 package com.afs.tdd;
 
 import java.text.MessageFormat;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class MarsRover {
     private RoverStatus roverStatus;
+    private final char NORTH = 'N';
+    private final char WEST = 'W';
+    private final char EAST = 'E';
+    private final char SOUTH = 'S';
 
     public MarsRover(RoverStatus roverStatus) {
         this.roverStatus = roverStatus;
     }
 
-    public String executeInstructionWithReport(String fullInstructions) {
+    public String executeInstructionWithReport(String fullInstructions) { //0 0 N MLRMMMM
         final String[] instructions = fullInstructions.split(" ");
         roverStatus = new RoverStatus(Integer.parseInt(instructions[0]),
                 Integer.parseInt(instructions[1]),
-                instructions[2]);
+                instructions[2].charAt(0));
         executeCommands(instructions[instructions.length - 1]);
         return MessageFormat.format("X: {0} Y: {1} D: {2}",
                 this.roverStatus.getLocationX(),
@@ -22,75 +28,76 @@ public class MarsRover {
     }
 
     public void executeCommands(String commands) {
-        for (Character command : commands.toCharArray()) {
-            executeCommand(command);
-        }
+        commands.chars().mapToObj(command -> (char)command).forEach(command ->executeCommand(command));
     }
 
     public void executeCommand(Character command) {
-        if (command.equals('M')) {
+        final char commandMove = 'M';
+        final char commandLeft = 'L';
+        final char commandRight = 'R';
+        if (command.equals(commandMove)) {
             move();
         }
-        if (command.equals('L')) {
+        if (command.equals(commandLeft)) {
             turnLeft();
         }
-        if (command.equals('R')) {
+        if (command.equals(commandRight)) {
             turnRight();
         }
     }
 
     private void turnRight() {
         switch (roverStatus.getDirection()) {
-            case "N":
-                setDirection("E");
+            case NORTH:
+                setDirection(EAST);
                 break;
-            case "W":
-                setDirection("N");
+            case WEST:
+                setDirection(NORTH);
                 break;
-            case "E":
-                setDirection("S");
+            case EAST:
+                setDirection(SOUTH);
                 break;
-            case "S":
-                setDirection("W");
+            case SOUTH:
+                setDirection(WEST);
                 break;
         }
     }
 
     private void turnLeft() {
         switch (roverStatus.getDirection()) {
-            case "N":
-                setDirection("W");
+            case NORTH:
+                setDirection(WEST);
                 break;
-            case "W":
-                setDirection("S");
+            case WEST:
+                setDirection(SOUTH);
                 break;
-            case "E":
-                setDirection("N");
+            case EAST:
+                setDirection(NORTH);
                 break;
-            case "S":
-                setDirection("E");
+            case SOUTH:
+                setDirection(EAST);
                 break;
         }
     }
 
     private void move() {
         switch (roverStatus.getDirection()) {
-            case "N":
+            case NORTH:
                 roverStatus.setLocationY(Math.incrementExact(roverStatus.getLocationY()));
                 break;
-            case "W":
+            case WEST:
                 roverStatus.setLocationX(Math.decrementExact(roverStatus.getLocationX()));
                 break;
-            case "E":
+            case EAST:
                 roverStatus.setLocationX(Math.incrementExact(roverStatus.getLocationX()));
                 break;
-            case "S":
+            case SOUTH:
                 roverStatus.setLocationY(Math.decrementExact(roverStatus.getLocationY()));
                 break;
         }
     }
 
-    private void setDirection(String direction) {
+    private void setDirection(Character direction) {
         roverStatus.setDirection(direction);
     }
 
