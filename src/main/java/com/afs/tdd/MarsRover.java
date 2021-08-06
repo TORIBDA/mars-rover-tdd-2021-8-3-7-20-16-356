@@ -1,8 +1,6 @@
 package com.afs.tdd;
 
 import java.text.MessageFormat;
-import java.util.Arrays;
-import java.util.Collections;
 
 public class MarsRover {
     private RoverStatus roverStatus;
@@ -15,7 +13,7 @@ public class MarsRover {
         this.roverStatus = roverStatus;
     }
 
-    public String executeInstructionWithReport(String fullInstructions) { //0 0 N MLRMMMM
+    public String executeInstructionWithReport(String fullInstructions) {
         final String[] instructions = fullInstructions.split(" ");
         roverStatus = new RoverStatus(Integer.parseInt(instructions[0]),
                 Integer.parseInt(instructions[1]),
